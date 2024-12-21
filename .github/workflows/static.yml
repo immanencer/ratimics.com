@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  deploy-to-pages:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -24,7 +24,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # GitHub Pages deployment steps
       - name: Setup Pages
         uses: actions/configure-pages@v5
         
@@ -37,7 +36,12 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      # S3 deployment steps
+  deploy-to-s3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -49,7 +53,6 @@ jobs:
         run: |
           aws s3 sync . s3://${{ secrets.S3_BUCKET }} --delete
           
-      # Optional: Invalidate CloudFront distribution if you're using CloudFront
       - name: Invalidate CloudFront
         if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID != '' }}
         run: |
