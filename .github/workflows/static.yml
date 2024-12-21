@@ -45,7 +45,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_ROLE_NAME
+          role-to-assume: arn:aws:iam::022118847419:role/ratimics.com
           aws-region: us-east-1
           
       - name: Deploy to S3
