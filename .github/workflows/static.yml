@@ -1,19 +1,15 @@
 name: Deploy static content to Pages and S3
-
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: "pages"
   cancel-in-progress: false
-
 jobs:
   deploy-to-pages:
     environment:
@@ -32,8 +28,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
   deploy-to-s3:
+    environment:
+      name: production
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,8 +44,8 @@ jobs:
         run: |
           aws s3 sync . s3://ratimics.com --delete
       - name: Invalidate CloudFront
-        if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID != '' }}
+        if: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID != '' }}
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/*"
