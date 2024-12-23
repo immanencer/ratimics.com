@@ -1,59 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moonstone Sanctum</title>
+
+  <!-- React and ReactDOM (CDN) -->
   <script defer src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script defer src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+
+  <!-- ShadCN-UI (CDN) -->
   <script defer src="https://cdn.jsdelivr.net/npm/shadcn-ui@1.2.0/dist/index.min.js"></script>
+
   <style>
+    /* 
+      ---------------------------------------------------------------------
+      GLOBAL STYLES
+      ---------------------------------------------------------------------
+    */
     body {
-      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background: #000;
+      font-family: 'Arial', sans-serif;
+
+      /* 
+        1) Subtle starry or space-like background: 
+           - Replace the URL with your own image if desired.
+        2) The background is set to cover the entire screen with a fallback color (#0d0d0d).
+      */
+      background: #0d0d0d url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80') 
+                  no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
     }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
     }
+
+    /* 
+      ---------------------------------------------------------------------
+      HEADER & FOOTER
+      ---------------------------------------------------------------------
+    */
     .header, .footer {
       text-align: center;
       padding: 20px 0;
-      background: #1a1a1a;
-    }
-    .hero {
-      text-align: center;
-      padding: 50px 20px;
-      background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+      background: rgba(0, 0, 0, 0.6);
       margin-bottom: 30px;
+      /* subtle backdrop effect for modern browsers */
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+
+    .footer {
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /*
+      ---------------------------------------------------------------------
+      HERO SECTION
+      ---------------------------------------------------------------------
+    */
+    .hero {
+      /* 
+        You can add a dedicated hero background image if desired,
+        or use a gradient overlay on the main background.
+      */
+      text-align: center;
+      padding: 80px 20px;
+      margin-bottom: 30px;
+      background: linear-gradient(
+        135deg, 
+        rgba(0, 0, 0, 0.7), 
+        rgba(20, 20, 20, 0.7)
+      );
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
+
+    /*
+      ---------------------------------------------------------------------
+      CALL-TO-ACTION BUTTONS
+      ---------------------------------------------------------------------
+    */
     .cta-button {
+      display: inline-block;
       margin: 10px;
-      padding: 10px 20px;
-      background: #444;
+      padding: 14px 26px;
+      background: #3d3d3d;
       color: #fff;
       text-decoration: none;
-      border-radius: 5px;
+      font-weight: bold;
+      border-radius: 8px;
       transition: all 0.3s ease;
     }
+
     .cta-button:hover {
-      background: #666;
+      background: #696969;
     }
+
+    /*
+      ---------------------------------------------------------------------
+      SECTION HEADINGS & CONTENT
+      ---------------------------------------------------------------------
+    */
+    h2 {
+      margin-top: 40px;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    /*
+      ---------------------------------------------------------------------
+      CARDS
+      ---------------------------------------------------------------------
+    */
     .card {
-      background: #222;
+      background: rgba(0, 0, 0, 0.5);
       padding: 20px;
-      margin: 10px 0;
+      margin: 20px 0;
       border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
     }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
     .card h3 {
       margin-top: 0;
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -71,11 +161,13 @@
 
       return (
         <div>
+          {/* HEADER */}
           <header className="header">
             <h1>Moonstone Sanctum</h1>
             <p>Create, explore, and battle in an evolving AI-driven universe.</p>
           </header>
 
+          {/* HERO SECTION */}
           <div className="hero">
             <h1>🚀 Welcome to Moonstone Sanctum</h1>
             <p>Shape the swarm with early access to AI-driven adventures.</p>
@@ -83,7 +175,9 @@
             <a href="https://collab.land" className="cta-button">Verify Wallet</a>
           </div>
 
+          {/* MAIN CONTENT */}
           <main className="container">
+            {/* ABOUT SECTION */}
             <section>
               <h2>About</h2>
               <p>
@@ -92,18 +186,20 @@
               </p>
             </section>
 
+            {/* ACCESS TIERS */}
             <section>
               <h2>Access Tiers</h2>
               {accessTiers.map((tier, index) => (
                 <div key={index} className="card">
                   <h3>{tier.title}</h3>
                   <p>{tier.description}</p>
-                  <p>Cost: {tier.cost}</p>
+                  <p><strong>Cost:</strong> {tier.cost}</p>
                   <a href="https://collab.land" className="cta-button">Verify Now</a>
                 </div>
               ))}
             </section>
 
+            {/* COMMUNITY */}
             <section>
               <h2>Community</h2>
               <p>Join the conversation on Discord and follow updates on Twitter.</p>
@@ -112,6 +208,7 @@
             </section>
           </main>
 
+          {/* FOOTER */}
           <footer className="footer">
             <p>&copy; 2024 Moonstone Sanctum. All Rights Reserved.</p>
           </footer>
