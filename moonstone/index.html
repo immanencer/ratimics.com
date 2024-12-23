@@ -3,216 +3,342 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Moonstone Sanctum</title>
+  <title>Moonstone Sanctum - AI-Driven Web3 Adventure</title>
 
-  <!-- React and ReactDOM (CDN) -->
-  <script defer src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-  <script defer src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-
-  <!-- ShadCN-UI (CDN) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/shadcn-ui@1.2.0/dist/index.min.js"></script>
+  <!-- React and ReactDOM -->
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 
   <style>
-    /* 
-      ---------------------------------------------------------------------
-      GLOBAL STYLES
-      ---------------------------------------------------------------------
-    */
+    :root {
+      --primary-color: #3d3d3d;
+      --hover-color: #696969;
+      --accent-color: #8a2be2;
+      --text-color: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.8);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --background-overlay: rgba(13, 13, 13, 0.85);
+      --card-background: rgba(20, 20, 20, 0.8);
+      --spacing-unit: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
-
-      /* 
-        1) Subtle starry or space-like background: 
-           - Replace the URL with your own image if desired.
-        2) The background is set to cover the entire screen with a fallback color (#0d0d0d).
-      */
-      background: #0d0d0d url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80') 
-                  no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d0d0d;
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
+      padding: calc(var(--spacing-unit) * 3);
     }
 
-    /* 
-      ---------------------------------------------------------------------
-      HEADER & FOOTER
-      ---------------------------------------------------------------------
-    */
     .header, .footer {
       text-align: center;
-      padding: 20px 0;
-      background: rgba(0, 0, 0, 0.6);
-      margin-bottom: 30px;
-      /* subtle backdrop effect for modern browsers */
-      backdrop-filter: blur(4px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: calc(var(--spacing-unit) * 3) 0;
+      background: var(--background-overlay);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
-    .footer {
-      margin-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    .header {
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: calc(var(--spacing-unit) * 4);
     }
 
-    /*
-      ---------------------------------------------------------------------
-      HERO SECTION
-      ---------------------------------------------------------------------
-    */
+    .header h1 {
+      background: linear-gradient(135deg, #fff, #8a2be2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 2.5rem;
+      margin-bottom: var(--spacing-unit);
+    }
+
+    .header p {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
     .hero {
-      /* 
-        You can add a dedicated hero background image if desired,
-        or use a gradient overlay on the main background.
-      */
       text-align: center;
-      padding: 80px 20px;
-      margin-bottom: 30px;
-      background: linear-gradient(
-        135deg, 
-        rgba(0, 0, 0, 0.7), 
-        rgba(20, 20, 20, 0.7)
-      );
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: calc(var(--spacing-unit) * 10) calc(var(--spacing-unit) * 3);
+      margin-bottom: calc(var(--spacing-unit) * 4);
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(20, 20, 20, 0.8));
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><circle cx="2" cy="2" r="0.5" fill="white" opacity="0.1"/></svg>');
+      opacity: 0.3;
+      z-index: -1;
     }
 
     .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      line-height: 1.2;
     }
 
-    /*
-      ---------------------------------------------------------------------
-      CALL-TO-ACTION BUTTONS
-      ---------------------------------------------------------------------
-    */
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto calc(var(--spacing-unit) * 4) auto;
+    }
+
+    .cta-container {
+      display: flex;
+      gap: calc(var(--spacing-unit) * 2);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     .cta-button {
-      display: inline-block;
-      margin: 10px;
-      padding: 14px 26px;
-      background: #3d3d3d;
-      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
+      background: var(--primary-color);
+      color: var(--text-color);
       text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
+      font-weight: 600;
+      border-radius: 12px;
       transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
     }
 
     .cta-button:hover {
-      background: #696969;
+      background: var(--hover-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(138, 43, 226, 0.2);
     }
 
-    /*
-      ---------------------------------------------------------------------
-      SECTION HEADINGS & CONTENT
-      ---------------------------------------------------------------------
-    */
+    .cta-button.primary {
+      background: var(--accent-color);
+    }
+
+    .cta-button.primary:hover {
+      background: #9d3cf7;
+    }
+
+    section {
+      margin-bottom: calc(var(--spacing-unit) * 8);
+    }
+
     h2 {
-      margin-top: 40px;
-      font-size: 1.8rem;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      padding-bottom: 10px;
-      margin-bottom: 20px;
+      font-size: 2rem;
+      margin-bottom: calc(var(--spacing-unit) * 4);
+      padding-bottom: var(--spacing-unit);
+      border-bottom: 2px solid var(--accent-color);
+      display: inline-block;
     }
 
-    /*
-      ---------------------------------------------------------------------
-      CARDS
-      ---------------------------------------------------------------------
-    */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: calc(var(--spacing-unit) * 3);
+      margin-top: calc(var(--spacing-unit) * 4);
+    }
+
     .card {
-      background: rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s ease;
+      background: var(--card-background);
+      padding: calc(var(--spacing-unit) * 4);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
       transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(138, 43, 226, 0.15);
     }
 
     .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
+      font-size: 1.5rem;
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      color: #fff;
+    }
+
+    .card .cost {
+      font-size: 1.2rem;
+      color: var(--accent-color);
+      margin: calc(var(--spacing-unit) * 2) 0;
+      font-weight: 600;
+    }
+
+    .info-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: var(--spacing-unit);
+      font-style: italic;
+    }
+
+    .footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: calc(var(--spacing-unit) * 2);
+      }
+
+      .hero {
+        padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 2);
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
   <div id="root"></div>
 
-  <script type="text/javascript">
-    const { useState } = React;
-
+  <script type="text/babel">
     function App() {
-      const [accessTiers] = useState([
-        { title: "Half Moon", cost: "1M $RATi", description: "Explore mysterious backrooms." },
-        { title: "Full Moon", cost: "10M $RATi", description: "Unlock summoning access." },
+      const [accessTiers] = React.useState([
+        { 
+          title: "Half Moon Access", 
+          cost: "1M $RATi", 
+          description: "Begin your journey into the mysterious backrooms. Create and train your first AI agent, and participate in basic exploration missions.",
+          features: ["Basic AI Agent Creation", "Backroom Access", "Training Missions"],
+          link: "https://collab.land"
+        },
+        { 
+          title: "Full Moon Access", 
+          cost: "10M $RATi", 
+          description: "Unlock the full potential of the Sanctum. Create multiple AI agents, access advanced summoning mechanics, and participate in PVP battles.",
+          features: ["Advanced AI Creation", "Multiple Agents", "PVP Access", "Special Events"],
+          link: "https://collab.land"
+        },
       ]);
 
       return (
-        <div>
-          {/* HEADER */}
+        <React.Fragment>
           <header className="header">
             <h1>Moonstone Sanctum</h1>
-            <p>Create, explore, and battle in an evolving AI-driven universe.</p>
+            <p>Step into a mystical realm where AI meets blockchain, creating an ever-evolving universe of possibilities.</p>
           </header>
 
-          {/* HERO SECTION */}
           <div className="hero">
-            <h1>🚀 Welcome to Moonstone Sanctum</h1>
-            <p>Shape the swarm with early access to AI-driven adventures.</p>
-            <a href="https://discord.gg/WXwevYVH" className="cta-button">Join Discord</a>
-            <a href="https://collab.land" className="cta-button">Verify Wallet</a>
+            <h1>🌙 Enter the Sanctum</h1>
+            <p>
+              Join an exclusive community of pioneers shaping the future of AI-driven adventures. 
+              Create unique agents, explore mysterious realms, and engage in strategic battles.
+            </p>
+            <div className="cta-container">
+              <a href="https://discord.gg/WXwevYVH" className="cta-button primary" target="_blank" rel="noopener noreferrer">
+                Join Discord Community
+              </a>
+              <a href="https://collab.land" className="cta-button" target="_blank" rel="noopener noreferrer">
+                Verify Token Holdings
+              </a>
+            </div>
           </div>
 
-          {/* MAIN CONTENT */}
           <main className="container">
-            {/* ABOUT SECTION */}
             <section>
-              <h2>About</h2>
+              <h2>About the Sanctum</h2>
               <p>
-                Dive into the Moonstone Sanctum Alpha, where you can create AI agents,
-                explore their mysterious backrooms, and engage in dynamic PVP battles.
+                Moonstone Sanctum is where blockchain meets artificial intelligence, creating a unique 
+                ecosystem where players can craft, train, and battle with AI agents. Our alpha phase 
+                introduces core features while shaping the future of decentralized AI gaming.
               </p>
             </section>
 
-            {/* ACCESS TIERS */}
             <section>
               <h2>Access Tiers</h2>
-              {accessTiers.map((tier, index) => (
-                <div key={index} className="card">
-                  <h3>{tier.title}</h3>
-                  <p>{tier.description}</p>
-                  <p><strong>Cost:</strong> {tier.cost}</p>
-                  <a href="https://collab.land" className="cta-button">Verify Now</a>
-                </div>
-              ))}
+              <p>Choose your level of involvement in the Moonstone Sanctum ecosystem:</p>
+              <div className="card-grid">
+                {accessTiers.map((tier, index) => (
+                  <div key={index} className="card">
+                    <h3>{tier.title}</h3>
+                    <p>{tier.description}</p>
+                    <div className="cost">{tier.cost}</div>
+                    <ul>
+                      {tier.features.map((feature, i) => (
+                        <li key={i}>{feature}</li>
+                      ))}
+                    </ul>
+                    <a 
+                      href={tier.link} 
+                      className="cta-button" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      Verify Holdings
+                    </a>
+                    <p className="info-text">
+                      Visit Collab.land to securely verify your token holdings and gain access.
+                    </p>
+                  </div>
+                ))}
+              </div>
             </section>
 
-            {/* COMMUNITY */}
             <section>
-              <h2>Community</h2>
-              <p>Join the conversation on Discord and follow updates on Twitter.</p>
-              <a href="https://discord.gg/WXwevYVH" className="cta-button">Join Discord</a>
-              <a href="https://twitter.com/rati_ai" className="cta-button">Follow on Twitter</a>
+              <h2>Join Our Community</h2>
+              <p>
+                Connect with fellow explorers, stay updated on development progress, and help shape 
+                the future of Moonstone Sanctum.
+              </p>
+              <div className="cta-container">
+                <a 
+                  href="https://discord.gg/WXwevYVH" 
+                  className="cta-button primary" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  Join Discord
+                </a>
+                <a 
+                  href="https://twitter.com/rati_ai" 
+                  className="cta-button" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  Follow Updates
+                </a>
+              </div>
             </section>
           </main>
 
-          {/* FOOTER */}
           <footer className="footer">
-            <p>&copy; 2024 Moonstone Sanctum. All Rights Reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Moonstone Sanctum. All rights reserved.</p>
           </footer>
-        </div>
+        </React.Fragment>
       );
     }
 
