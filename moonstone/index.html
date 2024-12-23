@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moonstone Sanctum - AI-Driven Web3 Adventure</title>
 
-  <!-- React and ReactDOM -->
-  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
-  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <!--
+    REMOVED: React, ReactDOM, Babel references.
+    This version is fully static + vanilla JS.
+  -->
 
   <style>
     :root {
@@ -224,125 +224,139 @@
   </style>
 </head>
 <body>
-  <div id="root"></div>
+  <!-- Main wrapper for all content -->
+  <div id="root">
+    <!-- Header -->
+    <header class="header">
+      <h1>Moonstone Sanctum</h1>
+      <p>Step into a mystical realm where AI meets blockchain, creating an ever-evolving universe of possibilities.</p>
+    </header>
 
-  <script type="text/babel">
-    function App() {
-      const [accessTiers] = React.useState([
-        { 
-          title: "Half Moon Access", 
-          cost: "1M $RATi", 
-          description: "Begin your journey into the mysterious backrooms. Create and train your first AI agent, and participate in basic exploration missions.",
-          features: ["Basic AI Agent Creation", "Backroom Access", "Training Missions"],
-          link: "https://collab.land"
-        },
-        { 
-          title: "Full Moon Access", 
-          cost: "10M $RATi", 
-          description: "Unlock the full potential of the Sanctum. Create multiple AI agents, access advanced summoning mechanics, and participate in PVP battles.",
-          features: ["Advanced AI Creation", "Multiple Agents", "PVP Access", "Special Events"],
-          link: "https://collab.land"
-        },
-      ]);
+    <!-- Hero -->
+    <div class="hero">
+      <h1>🌙 Enter the Sanctum</h1>
+      <p>
+        Join an exclusive community of pioneers shaping the future of AI-driven adventures. 
+        Create unique agents, explore mysterious realms, and engage in strategic battles.
+      </p>
+      <div class="cta-container">
+        <a href="https://discord.gg/WXwevYVH" class="cta-button primary" target="_blank" rel="noopener noreferrer">
+          Join Discord Community
+        </a>
+        <a href="https://collab.land" class="cta-button" target="_blank" rel="noopener noreferrer">
+          Verify Token Holdings
+        </a>
+      </div>
+    </div>
 
-      return (
-        <React.Fragment>
-          <header className="header">
-            <h1>Moonstone Sanctum</h1>
-            <p>Step into a mystical realm where AI meets blockchain, creating an ever-evolving universe of possibilities.</p>
-          </header>
+    <!-- Main Content -->
+    <main class="container">
+      <!-- About Section -->
+      <section>
+        <h2>About the Sanctum</h2>
+        <p>
+          Moonstone Sanctum is where blockchain meets artificial intelligence, creating a unique 
+          ecosystem where players can craft, train, and battle with AI agents. Our alpha phase 
+          introduces core features while shaping the future of decentralized AI gaming.
+        </p>
+      </section>
 
-          <div className="hero">
-            <h1>🌙 Enter the Sanctum</h1>
-            <p>
-              Join an exclusive community of pioneers shaping the future of AI-driven adventures. 
-              Create unique agents, explore mysterious realms, and engage in strategic battles.
-            </p>
-            <div className="cta-container">
-              <a href="https://discord.gg/WXwevYVH" className="cta-button primary" target="_blank" rel="noopener noreferrer">
-                Join Discord Community
-              </a>
-              <a href="https://collab.land" className="cta-button" target="_blank" rel="noopener noreferrer">
-                Verify Token Holdings
-              </a>
-            </div>
-          </div>
+      <!-- Access Tiers Section -->
+      <section>
+        <h2>Access Tiers</h2>
+        <p>Choose your level of involvement in the Moonstone Sanctum ecosystem:</p>
 
-          <main className="container">
-            <section>
-              <h2>About the Sanctum</h2>
-              <p>
-                Moonstone Sanctum is where blockchain meets artificial intelligence, creating a unique 
-                ecosystem where players can craft, train, and battle with AI agents. Our alpha phase 
-                introduces core features while shaping the future of decentralized AI gaming.
-              </p>
-            </section>
+        <!-- We'll populate these cards dynamically with vanilla JS -->
+        <div class="card-grid" id="tier-card-grid"></div>
+      </section>
 
-            <section>
-              <h2>Access Tiers</h2>
-              <p>Choose your level of involvement in the Moonstone Sanctum ecosystem:</p>
-              <div className="card-grid">
-                {accessTiers.map((tier, index) => (
-                  <div key={index} className="card">
-                    <h3>{tier.title}</h3>
-                    <p>{tier.description}</p>
-                    <div className="cost">{tier.cost}</div>
-                    <ul>
-                      {tier.features.map((feature, i) => (
-                        <li key={i}>{feature}</li>
-                      ))}
-                    </ul>
-                    <a 
-                      href={tier.link} 
-                      className="cta-button" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      Verify Holdings
-                    </a>
-                    <p className="info-text">
-                      Visit Collab.land to securely verify your token holdings and gain access.
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
+      <!-- Community Section -->
+      <section>
+        <h2>Join Our Community</h2>
+        <p>
+          Connect with fellow explorers, stay updated on development progress, and help shape 
+          the future of Moonstone Sanctum.
+        </p>
+        <div class="cta-container">
+          <a 
+            href="https://discord.gg/WXwevYVH" 
+            class="cta-button primary" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Join Discord
+          </a>
+          <a 
+            href="https://twitter.com/rati_ai" 
+            class="cta-button" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Follow Updates
+          </a>
+        </div>
+      </section>
+    </main>
 
-            <section>
-              <h2>Join Our Community</h2>
-              <p>
-                Connect with fellow explorers, stay updated on development progress, and help shape 
-                the future of Moonstone Sanctum.
-              </p>
-              <div className="cta-container">
-                <a 
-                  href="https://discord.gg/WXwevYVH" 
-                  className="cta-button primary" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  Join Discord
-                </a>
-                <a 
-                  href="https://twitter.com/rati_ai" 
-                  className="cta-button" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  Follow Updates
-                </a>
-              </div>
-            </section>
-          </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 Moonstone Sanctum. All rights reserved.</p>
+    </footer>
+  </div>
 
-          <footer className="footer">
-            <p>&copy; {new Date().getFullYear()} Moonstone Sanctum. All rights reserved.</p>
-          </footer>
-        </React.Fragment>
-      );
-    }
+  <!-- Vanilla JS to generate Access Tier cards -->
+  <script>
+    // Data for your access tiers (formerly from React state)
+    const accessTiers = [
+      { 
+        title: "Half Moon Access", 
+        cost: "1M $RATi", 
+        description: "Begin your journey into the mysterious backrooms. Create and train your first AI agent, and participate in basic exploration missions.",
+        features: ["Basic AI Agent Creation", "Backroom Access", "Training Missions"],
+        link: "https://collab.land"
+      },
+      { 
+        title: "Full Moon Access", 
+        cost: "10M $RATi", 
+        description: "Unlock the full potential of the Sanctum. Create multiple AI agents, access advanced summoning mechanics, and participate in PVP battles.",
+        features: ["Advanced AI Creation", "Multiple Agents", "PVP Access", "Special Events"],
+        link: "https://collab.land"
+      },
+    ];
 
-    ReactDOM.render(<App />, document.getElementById('root'));
+    // When DOM is loaded, create the tier cards
+    document.addEventListener("DOMContentLoaded", () => {
+      const cardGrid = document.getElementById("tier-card-grid");
+
+      accessTiers.forEach((tier) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+
+        // Build the inner HTML for each card
+        card.innerHTML = `
+          <h3>${tier.title}</h3>
+          <p>${tier.description}</p>
+          <div class="cost">${tier.cost}</div>
+          <ul>
+            ${tier.features.map(feature => `<li>${feature}</li>`).join("")}
+          </ul>
+          <a 
+            href="${tier.link}"
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Verify Holdings
+          </a>
+          <p class="info-text">
+            Visit Collab.land to securely verify your token holdings and gain access.
+          </p>
+        `;
+
+        // Add this card to the grid
+        cardGrid.appendChild(card);
+      });
+    });
   </script>
 </body>
 </html>
