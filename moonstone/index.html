@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moonstone Sanctum - AI-Driven Web3 Adventure</title>
 
-  <!--
-    REMOVED: React, ReactDOM, Babel references.
-    This version is fully static + vanilla JS.
-  -->
-
   <style>
     :root {
       --primary-color: #3d3d3d;
@@ -178,22 +173,35 @@
     }
 
     .card h3 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: calc(var(--spacing-unit) * 2);
-      color: #fff;
     }
 
+    /* More generous spacing for the cost and bullet lists */
     .card .cost {
       font-size: 1.2rem;
       color: var(--accent-color);
-      margin: calc(var(--spacing-unit) * 2) 0;
+      margin: calc(var(--spacing-unit) * 3) 0 var(--spacing-unit) 0;
       font-weight: 600;
+    }
+
+    .card p {
+      margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+
+    .card ul {
+      margin: calc(var(--spacing-unit) * 2) 0 calc(var(--spacing-unit) * 3) 1.5rem;
+      list-style: disc;
+    }
+
+    .card .cta-button {
+      margin-top: calc(var(--spacing-unit) * 2);
     }
 
     .info-text {
       font-size: 0.9rem;
       color: var(--text-secondary);
-      margin-top: var(--spacing-unit);
+      margin-top: calc(var(--spacing-unit) * 2);
       font-style: italic;
     }
 
@@ -243,8 +251,8 @@
         <a href="https://discord.gg/WXwevYVH" class="cta-button primary" target="_blank" rel="noopener noreferrer">
           Join Discord Community
         </a>
-        <a href="https://collab.land" class="cta-button" target="_blank" rel="noopener noreferrer">
-          Verify Token Holdings
+        <a href="https://www.collab.land/about" class="cta-button" target="_blank" rel="noopener noreferrer">
+          Collab.Land Info
         </a>
       </div>
     </div>
@@ -258,6 +266,10 @@
           Moonstone Sanctum is where blockchain meets artificial intelligence, creating a unique 
           ecosystem where players can craft, train, and battle with AI agents. Our alpha phase 
           introduces core features while shaping the future of decentralized AI gaming.
+        </p>
+        <p>
+          Once you’re in our Discord server, you can verify your token holdings using 
+          <strong>Collab.Land</strong>. 
         </p>
       </section>
 
@@ -306,25 +318,24 @@
 
   <!-- Vanilla JS to generate Access Tier cards -->
   <script>
-    // Data for your access tiers (formerly from React state)
+    // Data for your access tiers
     const accessTiers = [
       { 
         title: "Half Moon Access", 
         cost: "1M $RATi", 
         description: "Begin your journey into the mysterious backrooms. Create and train your first AI agent, and participate in basic exploration missions.",
         features: ["Basic AI Agent Creation", "Backroom Access", "Training Missions"],
-        link: "https://collab.land"
+        link: "https://discord.gg/WXwevYVH"
       },
       { 
         title: "Full Moon Access", 
         cost: "10M $RATi", 
         description: "Unlock the full potential of the Sanctum. Create multiple AI agents, access advanced summoning mechanics, and participate in PVP battles.",
         features: ["Advanced AI Creation", "Multiple Agents", "PVP Access", "Special Events"],
-        link: "https://collab.land"
+        link: "https://discord.gg/WXwevYVH"
       },
     ];
 
-    // When DOM is loaded, create the tier cards
     document.addEventListener("DOMContentLoaded", () => {
       const cardGrid = document.getElementById("tier-card-grid");
 
@@ -349,11 +360,11 @@
             Verify Holdings
           </a>
           <p class="info-text">
-            Visit Collab.land to securely verify your token holdings and gain access.
+            After joining our Discord, use Collab.Land to securely verify your token holdings 
+            and gain tier-based access.
           </p>
         `;
 
-        // Add this card to the grid
         cardGrid.appendChild(card);
       });
     });
