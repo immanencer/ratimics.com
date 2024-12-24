@@ -64,6 +64,31 @@ function setupSmoothScroll() {
     });
 }
 
+// Twitter Timeline Initialization
+function initializeTwitterTimeline() {
+    if (window.twttr) {
+        twttr.widgets.createTimeline(
+            {
+                sourceType: "list",
+                id: "1871386144837177767" // The list ID from the URL
+            },
+            document.querySelector(".social-card"),
+            {
+                height: 600,
+                theme: "dark",
+                chrome: "noheader nofooter",
+                dnt: true // Do Not Track
+            }
+        ).then(function (el) {
+            console.log("Timeline embedded successfully");
+        }).catch(function (e) {
+            console.error("Timeline could not be embedded:", e);
+            document.querySelector(".social-card").innerHTML = 
+                '<p class="error">Could not load timeline. Please refresh the page.</p>';
+        });
+    }
+}
+
 // Initialize
 function initializeApp() {
     const characterGrid = document.getElementById('character-grid');
@@ -87,6 +112,11 @@ function initializeApp() {
     document.querySelectorAll('img').forEach(img => {
         img.addEventListener('error', () => handleImageError(img));
     });
+
+    // Initialize Twitter timeline
+    if (window.twttr) {
+        twttr.ready(initializeTwitterTimeline);
+    }
 }
 
 // Wait for DOM to be fully loaded
