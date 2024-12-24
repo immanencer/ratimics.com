@@ -273,21 +273,41 @@ body {
     color: var(--text-muted);
 }
 
+
 /* Social Media Section */
 .social-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+    max-width: 800px; /* Optimized for single timeline */
+    margin: 2rem auto;
 }
 
 .social-card {
     background: var(--surface);
     border-radius: 12px;
-    padding: 1rem;
+    padding: 1.5rem;
     border: 1px solid var(--border);
     overflow: hidden;
-    height: 500px;
+    min-height: 600px; /* Ensure consistent height */
+}
+
+/* Loading State for Timeline */
+.social-card::before {
+    content: "Loading timeline...";
+    display: block;
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .social-grid {
+        margin: 1rem auto;
+    }
+
+    .social-card {
+        padding: 1rem;
+        min-height: 500px;
+    }
 }
 
 /* Error States */
