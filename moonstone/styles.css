@@ -46,10 +46,34 @@ body {
   padding: 2rem 0;
 }
 
-/* Header */
+/* Circular Logo Styling */
+.logo-wrapper {
+  position: absolute;
+  top: -50px; /* Adjust to position above the header */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 100px;
+  height: 100px;
+  background: var(--background);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid var(--primary); /* Optional border around the logo */
+}
+
+.circular-logo {
+  width: 80px; /* Ensure it fits well inside the wrapper */
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover; /* Ensures the image fits perfectly */
+}
+
+/* Adjust Header Padding to Account for Logo */
 .header {
   position: relative;
-  padding-top: 4rem;
+  padding-top: 6rem; /* Increased padding to make room for the logo */
   padding-bottom: 4rem;
   text-align: center;
   background: linear-gradient(
@@ -118,6 +142,10 @@ body {
   border-radius: var(--border-radius);
   word-break: break-all; /* Prevent overflow */
   font-size: 0.9rem; /* Adjust font size for better fit */
+}
+.contract-address > a {
+  color: var(--text-muted);
+  text-decoration: none;
 }
 
 /* Button Groups */
