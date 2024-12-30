@@ -238,10 +238,24 @@ main {
 }
 
 /* Feature Grid */
-.feature-grid {
+/* General Grid Style for Square Layouts */
+.feature-grid,
+.character-grid,
+.faq-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  grid-auto-rows: 1fr; /* Ensure rows match column proportions */
+}
+
+.feature-grid > *,
+.character-grid > *,
+.faq-grid > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1; /* Enforce square shapes */
 }
 
 .feature-card {
