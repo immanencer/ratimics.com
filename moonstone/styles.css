@@ -46,13 +46,12 @@ body {
   padding: 2rem 0;
 }
 
-/* Circular Logo Styling */
 .logo-wrapper {
-  position: absolute;
+  position: absolute; /* Allows precise placement */
   top: -50px; /* Adjust to position above the header */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
+  z-index: 0; /* Place it behind the title */
   width: 100px;
   height: 100px;
   background: var(--background);
@@ -60,14 +59,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 4px solid var(--primary); /* Optional border around the logo */
+  border: 4px solid var(--primary); /* Optional border */
 }
 
 .circular-logo {
-  width: 80px; /* Ensure it fits well inside the wrapper */
+  width: 80px;
   height: 80px;
   border-radius: 50%;
-  object-fit: cover; /* Ensures the image fits perfectly */
+  object-fit: cover;
+}
+
+.header h1 {
+  position: relative; /* Create a stacking context for the title */
+  z-index: 1; /* Place the title above the logo */
 }
 
 /* Adjust Header Padding to Account for Logo */
@@ -141,10 +145,16 @@ body {
   padding: 0.25rem 0.5rem;
   border-radius: var(--border-radius);
   word-break: break-all; /* Prevent overflow */
+  font-size: 0.8rem; /* Adjust font size for better fit */
+}
+a {
+  font-family: monospace;
   font-size: 0.9rem; /* Adjust font size for better fit */
+  color: var(--primary);
+  text-decoration: none;
 }
 .contract-address > a {
-  color: var(--text-muted);
+  color: var(--secondary);
   text-decoration: none;
 }
 
@@ -700,15 +710,16 @@ main {
 }
 
 .social-link {
-  font-size: 0.95rem;
-  color: var(--primary);
+  display: inline-block; /* Ensure the link is visible */
+  color: var(--primary); /* Set a contrasting color */
   text-decoration: none;
+  font-size: 0.9rem;
   font-weight: bold;
-  transition: color var(--transition-speed);
+  transition: color 0.3s ease;
 }
 
 .social-link:hover {
-  color: var(--secondary);
+  color: var(--secondary); /* Optional hover effect */
 }
 
 /* Responsive Adjustments */
