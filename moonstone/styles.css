@@ -116,6 +116,8 @@ body {
   display: inline-block;
   padding: 0.25rem 0.5rem;
   border-radius: var(--border-radius);
+  word-break: break-all; /* Prevent overflow */
+  font-size: 0.9rem; /* Adjust font size for better fit */
 }
 
 /* Button Groups */
@@ -475,13 +477,49 @@ main {
 
   /* Adjust character image height */
   .character-image-wrapper {
-    height: 250px;
+    height: 250px; /* Adjust height for mobile */
   }
 
   /* Responsive social card */
   .social-card {
     min-height: 300px;
     padding: 1rem;
+  }
+
+  .contract-info {
+    padding: 1rem; /* Adjust padding for mobile */
+  }
+
+  .contract-address {
+    font-size: 0.85rem; /* Further adjust font size for smaller screens */
+  }
+
+  .character-content h3 {
+    font-size: 1rem; /* Further adjust text size for mobile */
+  }
+
+  .character-description {
+    font-size: 0.85rem; /* Further adjust text size for mobile */
+  }
+
+  .character-card {
+    flex-direction: column; /* Stack image and text vertically on narrow screens */
+  }
+
+  .character-image-wrapper {
+    width: 100%; /* Full width for narrow screens */
+  }
+
+  .character-content {
+    width: 100%; /* Full width for narrow screens */
+    padding: 0.5rem; /* Adjust padding for narrow screens */
+  }
+
+  .community-list {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    padding: 0 1rem;
   }
 }
 
@@ -502,14 +540,47 @@ main {
   .footer p, .footer small {
     font-size: 0.9rem;
   }
+
+  .contract-address {
+    font-size: 0.8rem; /* Further adjust font size for smaller screens */
+  }
+
+  .character-image-wrapper {
+    height: 200px; /* Further adjust height for smaller screens */
+  }
+
+  .character-content h3 {
+    font-size: 0.9rem; /* Further adjust text size for smaller screens */
+  }
+
+  .character-description {
+    font-size: 0.8rem; /* Further adjust text size for smaller screens */
+  }
+}
+
+@media (min-width: 769px) {
+  .character-card {
+    flex-direction: row; /* Display image beside text on wider screens */
+  }
+
+  .character-image-wrapper {
+    width: 50%; /* Adjust width for wider screens */
+  }
+
+  .character-content {
+    width: 50%; /* Adjust width for wider screens */
+    padding: 1rem; /* Adjust padding for wider screens */
+  }
 }
 
 /* Character Section Styles */
 .character-grid {
+  scroll-snap-type: none;
+  overflow: visible;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
 }
 
 .character-card {
@@ -518,37 +589,46 @@ main {
   overflow: hidden;
   border: 1px solid var(--border);
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  scroll-snap-align: center;
 }
 
 .character-card:hover {
-  transform: translateY(-4px);
+  transform: scale(1.05); /* Slightly enlarge on hover */
   box-shadow: 0 8px 24px rgba(138, 43, 226, 0.15);
 }
 
 .character-image-wrapper {
   width: 100%;
-  height: 300px;
+  height: 66%; /* Adjust height for card pack feel */
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .character-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Ensure the full image is always visible */
   transition: transform var(--transition-speed);
 }
 
-.character-card:hover .character-image {
-  transform: scale(1.05);
-}
-
 .character-content {
-  padding: 1.5rem;
+  padding: 1rem;
+  text-align: center;
 }
 
 .character-content h3 {
   font-family: var(--heading-font);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin-bottom: 0.75rem;
   color: var(--primary);
   display: flex;
@@ -557,9 +637,10 @@ main {
 }
 
 .character-description {
+  font-size: 0.9rem; /* Make text smaller */
   color: var(--text-muted);
-  margin-bottom: 1rem;
-  line-height: 1.6;
+  margin-bottom: 0.5rem; /* Adjust margin */
+  line-height: 1.4; /* Adjust line height */
 }
 
 .social-link {
@@ -572,6 +653,35 @@ main {
 
 .social-link:hover {
   color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .character-card {
+    width: 80%; /* Adjust width for narrow screens */
+    height: auto; /* Auto height for narrow screens */
+  }
+
+  .character-image-wrapper {
+    height: 250px; /* Adjust height for narrow screens */
+  }
+
+  .character-content h3 {
+    font-size: 1rem; /* Further adjust text size for mobile */
+  }
+
+  .character-description {
+    font-size: 0.85rem; /* Further adjust text size for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .character-content h3 {
+    font-size: 0.9rem; /* Further adjust text size for smaller screens */
+  }
+
+  .character-description {
+    font-size: 0.8rem; /* Further adjust text size for smaller screens */
+  }
 }
 
 /* Animations */

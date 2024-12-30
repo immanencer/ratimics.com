@@ -29,4 +29,35 @@ document.addEventListener('DOMContentLoaded', () => {
         this.alt = 'Character image placeholder';
       };
     });
+
+    // Swipe functionality for card pack opening feel
+    const characterGrid = document.querySelector('.character-grid');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+  
+    characterGrid.addEventListener('mousedown', (e) => {
+      isDown = true;
+      characterGrid.classList.add('active');
+      startX = e.pageX - characterGrid.offsetLeft;
+      scrollLeft = characterGrid.scrollLeft;
+    });
+  
+    characterGrid.addEventListener('mouseleave', () => {
+      isDown = false;
+      characterGrid.classList.remove('active');
+    });
+  
+    characterGrid.addEventListener('mouseup', () => {
+      isDown = false;
+      characterGrid.classList.remove('active');
+    });
+  
+    characterGrid.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - characterGrid.offsetLeft;
+      const walk = (x - startX) * 3; // Scroll-fast
+      characterGrid.scrollLeft = scrollLeft - walk;
+    });
   });
