@@ -525,7 +525,10 @@ main {
 
 @media (max-width: 480px) {
   .header h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .feature-card, .faq-item, .character-card {
@@ -555,6 +558,11 @@ main {
 
   .character-description {
     font-size: 0.8rem; /* Further adjust text size for smaller screens */
+  }
+
+  .container {
+    width: 95%;
+    padding: 1.5rem 0;
   }
 }
 
