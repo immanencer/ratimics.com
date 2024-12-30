@@ -1,5 +1,4 @@
 :root {
-    /* Color Variables */
     --primary: #8a2be2;
     --secondary: #6b21a8;
     --background: #0d0d0d;
@@ -10,7 +9,6 @@
     --border: rgba(255, 255, 255, 0.1);
 }
 
-/* Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -25,12 +23,11 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 100%;
+    padding: 1.5rem;
     margin: 0 auto;
-    padding: 2rem;
 }
 
-/* Header Styles */
 .header {
     background: linear-gradient(to bottom, rgba(138, 43, 226, 0.1), transparent);
     padding: 2rem 0;
@@ -39,7 +36,7 @@ body {
 }
 
 .header h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
     background: linear-gradient(135deg, #fff, var(--primary));
     -webkit-background-clip: text;
@@ -47,13 +44,11 @@ body {
     color: transparent;
 }
 
-/* Navigation */
 .nav {
     background: var(--surface);
-    padding: 1rem 0;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     border-bottom: 1px solid var(--border);
 }
 
@@ -62,43 +57,70 @@ body {
     justify-content: center;
     gap: 2rem;
     list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+    flex-wrap: wrap;
 }
 
-.nav a {
+.nav ul li a {
     color: var(--text);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
 
-.nav a:hover {
+.nav ul li a:hover {
     color: var(--primary);
 }
 
-/* Section Styles */
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    background: var(--surface);
+    border: none;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.nav-toggle:focus {
+    outline: none;
+}
+
+.nav.collapsed ul {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+}
+
+.nav.collapsed ul li {
+    margin: 0.5rem 0;
+}
+
 .section {
-    margin: 4rem 0;
+    margin: 3rem 0;
 }
 
 .section-title {
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     color: var(--primary);
 }
 
-/* Character Grid */
 .character-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
 .character-card {
     background: var(--surface);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem;
     border: 1px solid var(--border);
     transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
 }
 
 .character-card:hover {
@@ -108,151 +130,35 @@ body {
 
 .character-image {
     width: 100%;
-    height: 300px;
+    height: auto;
+    max-height: 200px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 1rem;
 }
 
 .character-name {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-bottom: 0.5rem;
     color: var(--primary);
 }
 
 .character-description {
     color: var(--text-muted);
-}
-
-/* Feature Grid */
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.feature-card {
-    background: var(--surface);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    transition: transform 0.3s;
-}
-
-.feature-card:hover {
-    transform: translateY(-2px);
-}
-
-.feature-card h3 {
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-/* FAQ Section */
-.faq-grid {
-    display: grid;
-    gap: 2rem;
-}
-
-.faq-item {
-    background: var(--surface);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-}
-
-.faq-item h3 {
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-/* Code Blocks */
-.code-block {
-    background: var(--surface-hover);
-    padding: 1rem;
-    border-radius: 8px;
-    font-family: monospace;
-    margin: 1rem 0;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-break: break-word;
-}
-
-/* Verification Steps */
-.verification-steps {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0;
-}
-
-.verification-steps li {
-    background: var(--surface-hover);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.step-number {
-    background: var(--primary);
-    color: var(--text);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-weight: bold;
-}
-
-/* Contract Info */
-.contract-info {
-    background: var(--surface);
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin: 2rem 0;
-    border: 1px solid var(--border);
-}
-
-.contract-address {
-    font-family: monospace;
-    background: var(--surface-hover);
-    padding: 1rem;
-    border-radius: 8px;
-    word-break: break-all;
-    margin-top: 0.5rem;
-}
-
-/* Alerts */
-.alert {
-    background: rgba(138, 43, 226, 0.1);
-    border-left: 4px solid var(--primary);
-    padding: 1rem;
-    margin: 1rem 0;
-    border-radius: 0 8px 8px 0;
-}
-
-/* Button Groups */
-.button-group {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 2rem;
-    flex-wrap: wrap;
+    font-size: 0.9rem;
+    line-height: 1.4;
 }
 
 .cta-button {
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem;
     background: var(--primary);
     color: var(--text);
     text-decoration: none;
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .cta-button.secondary {
@@ -264,149 +170,52 @@ body {
     transform: translateY(-2px);
 }
 
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 2rem 0;
-    margin-top: 4rem;
-    border-top: 1px solid var(--border);
-    color: var(--text-muted);
-}
-
-
-/* Social Media Section */
-.social-grid {
-    max-width: 800px; /* Optimized for single timeline */
-    margin: 2rem auto;
-}
-
-.social-card {
-    background: var(--surface);
-    border-radius: 12px;
-    padding: 1.5rem;
-    border: 1px solid var(--border);
-    overflow: hidden;
-    min-height: 600px; /* Ensure consistent height */
-}
-
-/* Loading State for Timeline */
-.social-card::before {
-    content: "Loading timeline...";
-    display: block;
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-muted);
-}
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
-    .social-grid {
-        margin: 1rem auto;
+    .nav ul {
+        display: none;
+        flex-direction: column;
     }
 
-    .social-card {
-        padding: 1rem;
-        min-height: 500px;
+    .nav.collapsed ul {
+        display: flex;
     }
-}
 
-/* Error States */
-.error {
-    color: #ff4444;
-    padding: 1rem;
-    background: rgba(255, 68, 68, 0.1);
-    border-radius: 8px;
-    margin: 1rem 0;
-}
-
-/* Loading States */
-.loading {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-muted);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 1rem;
+    .nav-toggle {
+        display: block;
     }
 
     .header h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
-    .nav ul {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-
-    .button-group {
-        flex-direction: column;
-    }
-
-    .cta-button {
-        width: 100%;
-        text-align: center;
+    .container {
+        padding: 1rem;
     }
 
     .character-grid {
         grid-template-columns: 1fr;
     }
-
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .social-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .verification-steps li {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .step-number {
-        margin: 0 auto;
-    }
 }
 
-/* Print Styles */
-@media print {
-    .nav,
-    .button-group,
-    .social-grid {
-        display: none;
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
     }
 
-    body {
-        background: white;
-        color: black;
+    .character-card {
+        padding: 0.75rem;
     }
 
-    .container {
-        max-width: 100%;
-        padding: 0;
+    .character-name {
+        font-size: 1rem;
     }
-}
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
+    .character-description {
+        font-size: 0.8rem;
     }
-}
 
-/* High Contrast Mode */
-@media (prefers-contrast: high) {
-    :root {
-        --primary: #ff00ff;
-        --secondary: #00ffff;
-        --text: #ffffff;
-        --background: #000000;
+    .cta-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
     }
 }
