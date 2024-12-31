@@ -72,6 +72,7 @@ body {
 .header h1 {
   position: relative; /* Create a stacking context for the title */
   z-index: 1; /* Place the title above the logo */
+  margin-top: 1em;
 }
 
 /* Adjust Header Padding to Account for Logo */
