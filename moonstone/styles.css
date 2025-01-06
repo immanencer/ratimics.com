@@ -26,16 +26,16 @@
 }
 
 html {
-  font-size: 16px; /* Base font size */
+  font-size: 16px;
 }
 
 body {
   font-family: var(--body-font);
   background: var(--background);
   color: var(--text);
-  line-height: 1.8; /* Increased line-height for readability */
+  line-height: 1.8;
   overflow-x: hidden;
-  letter-spacing: 0.5px; /* Enhanced letter spacing */
+  letter-spacing: 0.5px;
 }
 
 /* Container Utility */
@@ -46,12 +46,13 @@ body {
   padding: 2rem 0;
 }
 
+/* Logo Styles */
 .logo-wrapper {
-  position: absolute; /* Allows precise placement */
-  top: -50px; /* Adjust to position above the header */
+  position: absolute;
+  top: -50px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 0; /* Place it behind the title */
+  z-index: 0;
   width: 100px;
   height: 100px;
   background: var(--background);
@@ -59,7 +60,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 4px solid var(--primary); /* Optional border */
+  border: 4px solid var(--primary);
 }
 
 .circular-logo {
@@ -69,16 +70,10 @@ body {
   object-fit: cover;
 }
 
-.header h1 {
-  position: relative; /* Create a stacking context for the title */
-  z-index: 1; /* Place the title above the logo */
-  margin-top: 1em;
-}
-
-/* Adjust Header Padding to Account for Logo */
+/* Header */
 .header {
   position: relative;
-  padding-top: 6rem; /* Increased padding to make room for the logo */
+  padding-top: 6rem; /* room for logo */
   padding-bottom: 4rem;
   text-align: center;
   background: linear-gradient(
@@ -92,7 +87,7 @@ body {
 }
 
 .header::after {
-  /* Subtle overlay for better text contrast */
+  /* subtle overlay */
   content: '';
   position: absolute;
   inset: 0;
@@ -106,8 +101,11 @@ body {
 }
 
 .header h1 {
+  position: relative;
+  z-index: 1;
+  margin-top: 1em;
   font-family: var(--heading-font);
-  font-size: 2rem; /* Adjusted for better mobile scaling */
+  font-size: 2rem;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, #ffffff, var(--primary));
   -webkit-background-clip: text;
@@ -123,7 +121,7 @@ body {
   opacity: 0.9;
 }
 
-/* Contract Info Box */
+/* Contract Info */
 .contract-info {
   background: var(--surface-hover);
   padding: 1rem 2rem;
@@ -132,7 +130,7 @@ body {
   display: inline-block;
 }
 
-.contract-info h2 { /* Changed from h3 to h2 */
+.contract-info h2 {
   margin-bottom: 0.5rem;
   font-family: var(--heading-font);
   font-size: 1.2rem;
@@ -145,18 +143,18 @@ body {
   display: inline-block;
   padding: 0.25rem 0.5rem;
   border-radius: var(--border-radius);
-  word-break: break-all; /* Prevent overflow */
-  font-size: 0.8rem; /* Adjust font size for better fit */
+  word-break: break-all;
+  font-size: 0.8rem;
 }
+
 a {
-  font-family: monospace;
-  font-size: 0.9rem; /* Adjust font size for better fit */
   color: var(--primary);
   text-decoration: none;
+  transition: color var(--transition-speed);
 }
-.contract-address > a {
+
+a:hover {
   color: var(--secondary);
-  text-decoration: none;
 }
 
 /* Button Groups */
@@ -170,14 +168,14 @@ a {
 
 .cta-button {
   display: inline-block;
-  padding: 0.85rem 1.75rem; /* Increased padding for touch */
+  padding: 0.85rem 1.75rem;
   background: var(--primary);
   color: var(--text);
-  text-decoration: none;
   border-radius: var(--border-radius);
   font-weight: 600;
   transition: all var(--transition-speed) ease;
   font-family: var(--body-font);
+  text-align: center;
 }
 
 .cta-button.secondary {
@@ -218,12 +216,10 @@ a {
 
 .nav a {
   color: var(--text);
-  text-decoration: none;
   font-weight: 500;
-  transition: color var(--transition-speed);
   font-family: var(--body-font);
   font-size: 0.95rem;
-  padding: 0.5rem 0; /* Increased tappable area */
+  padding: 0.5rem 0;
 }
 
 .nav a:hover {
@@ -243,11 +239,11 @@ main {
 .alert {
   background: rgba(138, 43, 226, 0.1);
   border-left: 4px solid var(--primary);
-  padding: 0.75rem 1rem; /* Adjusted padding */
+  padding: 0.75rem 1rem;
   margin-bottom: 2rem;
   border-radius: 0 8px 8px 0;
   animation: slideIn 0.6s ease;
-  font-size: 0.95rem; /* Responsive font size */
+  font-size: 0.95rem;
 }
 
 .alert strong {
@@ -279,24 +275,10 @@ main {
 }
 
 /* Feature Grid */
-/* General Grid Style for Square Layouts */
-.feature-grid,
-.character-grid,
-.faq-grid {
+.feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  grid-auto-rows: 1fr; /* Ensure rows match column proportions */
-}
-
-.feature-grid > *,
-.character-grid > *,
-.faq-grid > * {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  aspect-ratio: 1 / 1; /* Enforce square shapes */
+  gap: 1.5rem;
 }
 
 .feature-card {
@@ -324,7 +306,7 @@ main {
   font-size: 0.95rem;
 }
 
-/* Community Section */
+/* Community List */
 .community-list {
   margin-top: 1rem;
   margin-bottom: 2rem;
@@ -336,105 +318,19 @@ main {
   line-height: 1.5;
 }
 
-.social-grid {
-  max-width: 800px;
-  margin: 2rem auto;
-}
-
-.social-card {
-  background: var(--surface);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  min-height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.social-card iframe { /* Ensure iframe responsiveness */
-  width: 100% !important;
-  height: auto !important;
-}
-
-/* FAQ Section */
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.faq-item {
-  background: var(--surface);
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border);
-  transition: box-shadow var(--transition-speed);
-  position: relative;
-}
-
-.faq-item:hover {
-  box-shadow: 0 8px 24px rgba(138, 43, 226, 0.15);
-}
-
-.faq-item h3 {
-  color: var(--primary);
-  margin-bottom: 1rem;
-  font-family: var(--heading-font);
-  font-size: 1.2rem;
-}
-
-.faq-item p {
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 1rem;
-}
-
-.verification-steps {
-  list-style: none;
-  padding-left: 0;
-  margin: 1rem 0;
-}
-
-.verification-steps li {
-  background: var(--surface-hover);
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  margin-bottom: 0.5rem;
-  color: var(--text-muted);
-}
-
-/* Code Blocks */
-.code-block {
-  background: var(--surface-hover);
-  padding: 0.75rem 1rem; /* Adjusted padding */
-  border-radius: var(--border-radius);
-  margin: 1rem 0;
-  overflow-x: auto;
-  font-size: 0.85rem; /* Reduced font size */
-  line-height: 1.4;
-  font-family: monospace;
-  color: #f4f4f4;
-}
-
 /* Footer */
 .footer {
   text-align: center;
-  padding: 1.5rem 0; /* Reduced padding for mobile */
+  padding: 1.5rem 0;
   margin-top: 4rem;
   border-top: 1px solid var(--border);
   color: var(--text-muted);
   background: var(--surface);
 }
 
-.footer p, .footer small { /* Ensured both elements are responsive */
-  font-size: 1rem;
-}
-
+.footer p,
 .footer small {
-  display: block;
-  margin-top: 0.5rem;
+  font-size: 1rem;
 }
 
 /* Responsive Navigation (Hamburger) */
@@ -443,7 +339,7 @@ main {
   background: none;
   border: none;
   color: var(--text);
-  font-size: 1.6rem; /* Increased font size for better visibility */
+  font-size: 1.6rem;
   cursor: pointer;
   padding: 0.5rem;
   transition: color var(--transition-speed);
@@ -472,7 +368,7 @@ main {
     flex-direction: column;
     margin-top: 1rem;
     gap: 1rem;
-    padding: 1rem 0; /* Added padding */
+    padding: 1rem 0;
     background: var(--surface);
     position: absolute;
     top: 100%;
@@ -490,14 +386,13 @@ main {
 
   .nav ul li {
     text-align: center;
-    padding: 0.5rem 0; /* Increased padding for touch */
+    padding: 0.5rem 0;
   }
 
   .section-title {
     font-size: 1.75rem;
   }
 
-  /* Button Group for Mobile */
   .button-group {
     flex-direction: column;
     align-items: center;
@@ -509,94 +404,16 @@ main {
     text-align: center;
   }
 
-  /* Reduce grid gaps on mobile */
-  .feature-grid, .faq-grid, .character-grid {
+  .feature-grid {
     gap: 1rem;
   }
 
-  /* Adjust character image height */
-  .character-image-wrapper {
-    height: 250px; /* Adjust height for mobile */
-  }
-
-  /* Responsive social card */
-  .social-card {
-    min-height: 300px;
-    padding: 1rem;
-  }
-
   .contract-info {
-    padding: 1rem; /* Adjust padding for mobile */
-  }
-
-  .contract-address {
-    font-size: 0.85rem; /* Further adjust font size for smaller screens */
-  }
-
-  .character-content h3 {
-    font-size: 1rem; /* Further adjust text size for mobile */
-  }
-
-  .character-description {
-    font-size: 0.85rem; /* Further adjust text size for mobile */
-  }
-
-  .character-card {
-    flex-direction: column; /* Stack image and text vertically on narrow screens */
-  }
-
-  .character-image-wrapper {
-    width: 100%; /* Full width for narrow screens */
-  }
-
-  .character-content {
-    width: 100%; /* Full width for narrow screens */
-    padding: 0.5rem; /* Adjust padding for narrow screens */
-  }
-
-  .community-list {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-    padding: 0 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .header h1 {
-    font-size: 1.8rem;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-
-  .feature-card, .faq-item, .character-card {
     padding: 1rem;
   }
 
-  .code-block {
-    font-size: 0.8rem;
-    padding: 0.5rem;
-  }
-
-  .footer p, .footer small {
-    font-size: 0.9rem;
-  }
-
   .contract-address {
-    font-size: 0.8rem; /* Further adjust font size for smaller screens */
-  }
-
-  .character-image-wrapper {
-    height: 200px; /* Further adjust height for smaller screens */
-  }
-
-  .character-content h3 {
-    font-size: 0.9rem; /* Further adjust text size for smaller screens */
-  }
-
-  .character-description {
-    font-size: 0.8rem; /* Further adjust text size for smaller screens */
+    font-size: 0.85rem;
   }
 
   .container {
@@ -605,18 +422,22 @@ main {
   }
 }
 
-@media (min-width: 769px) {
-  .character-card {
-    flex-direction: row; /* Display image beside text on wider screens */
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.8rem;
   }
 
-  .character-image-wrapper {
-    width: 50%; /* Adjust width for wider screens */
+  .feature-card {
+    padding: 1rem;
   }
 
-  .character-content {
-    width: 50%; /* Adjust width for wider screens */
-    padding: 1rem; /* Adjust padding for wider screens */
+  .footer p,
+  .footer small {
+    font-size: 0.9rem;
+  }
+
+  .contract-address {
+    font-size: 0.8rem;
   }
 }
 
@@ -628,7 +449,6 @@ main {
   justify-items: center;
 }
 
-/* Character Card */
 .character-card {
   position: relative;
   width: 100%;
@@ -642,38 +462,33 @@ main {
 }
 
 .character-card:hover {
-  transform: scale(1.05); /* Slight zoom */
+  transform: scale(1.03);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-/* Character Image */
 .character-image-wrapper {
   position: relative;
   width: 100%;
-  height: 0;
-  padding-top: 70%; /* Aspect ratio for consistent height */
   overflow: hidden;
+  /* height auto - let the image define the height */
 }
 
 .character-image {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Crop and fit the image */
+  display: block;
+  object-fit: cover;
   transition: transform var(--transition-speed);
 }
 
 .character-card:hover .character-image {
-  transform: scale(1.1); /* Zoom effect on hover */
+  transform: scale(1.05);
 }
 
 /* Image Overlay */
 .character-image-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -682,7 +497,7 @@ main {
 }
 
 .character-card:hover .character-image-overlay {
-  opacity: 1; /* Reveal on hover */
+  opacity: 1;
 }
 
 .character-image-overlay i {
@@ -711,8 +526,8 @@ main {
 }
 
 .social-link {
-  display: inline-block; /* Ensure the link is visible */
-  color: var(--primary); /* Set a contrasting color */
+  display: inline-block;
+  color: var(--primary);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: bold;
@@ -720,35 +535,14 @@ main {
 }
 
 .social-link:hover {
-  color: var(--secondary); /* Optional hover effect */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .character-card {
-    max-width: 100%;
-  }
-
-  .character-image-wrapper {
-    padding-top: 80%; /* Slightly taller aspect ratio for mobile */
-  }
-}
-
-@media (max-width: 480px) {
-  .character-content h3 {
-    font-size: 0.9rem; /* Further adjust text size for smaller screens */
-  }
-
-  .character-description {
-    font-size: 0.8rem; /* Further adjust text size for smaller screens */
-  }
+  color: var(--secondary);
 }
 
 /* Animations */
 @keyframes fadeInDown {
   0% {
     opacity: 0;
-    transform: translateY(-10px); /* Reduced movement */
+    transform: translateY(-10px);
   }
   100% {
     opacity: 1;
